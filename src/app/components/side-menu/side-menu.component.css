@@ -1,0 +1,14 @@
+.side-menu {
+  background-color: #f1f1f1;
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 60px;
+  left: 0;
+}
+a {
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+}
