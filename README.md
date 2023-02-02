@@ -26,9 +26,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-npm install -g @angular/cli@latest
 
+# atualizar Angular version
+1) npm install -g @angular/cli@latest
+2) ng update @angular/cli@latest
+3) exemplo de atualização do pacote: 
+``` ng update @angular/material ```
+
+# pacotes
 npm install primeng --save
 npm install primeicons --save
 
-ng add @ng-bootstrap/ng-bootstrap
+

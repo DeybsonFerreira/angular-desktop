@@ -6,18 +6,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+var angularMaterial = [MatSidenavModule, MatListModule, MatToolbarModule];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    SideMenuComponent,
+  declarations: [AppComponent, LoginComponent, RegisterComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    angularMaterial,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [SideMenuComponent],
+  exports: [],
 })
 export class AppModule {}
