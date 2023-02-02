@@ -1,4 +1,29 @@
-<h1>login teste</h1>
-<h1>login teste</h1>
-<h1>login teste</h1>
-<h1>login teste</h1>
+<form class="login-form">
+  <div class="avatar-container">
+    <mat-icon class="avatar">person</mat-icon>
+  </div>
+
+  <mat-form-field class="form-full-width">
+    <input
+      matInput
+      name="username"
+      [(ngModel)]="username"
+      placeholder="Usuário"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width">
+    <input
+      matInput
+      name="password"
+      [(ngModel)]="password"
+      placeholder="Senha"
+      [type]="hide ? 'password' : 'text'"
+    />
+    <mat-icon matSuffix (click)="hide = !hide">{{
+      hide ? "visibility" : "visibility_off"
+    }}</mat-icon>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="login()">Entrar</button>
+</form>
