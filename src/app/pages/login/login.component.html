@@ -1,29 +1,37 @@
-<form class="login-form">
-  <div class="avatar-container">
-    <mat-icon class="avatar">person</mat-icon>
-  </div>
+<div class="main mat-elevation-z5">
+  <mat-card>
+    <mat-card-content>
+      <form class="login-form">
+        <div class="avatar-container">
+          <mat-icon class="avatar">person</mat-icon>
+        </div>
 
-  <mat-form-field class="form-full-width">
-    <input
-      matInput
-      name="username"
-      [(ngModel)]="username"
-      placeholder="Usuário"
-    />
-  </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <input
+            matInput
+            name="username"
+            [(ngModel)]="username"
+            placeholder="Usuário"
+          />
+        </mat-form-field>
 
-  <mat-form-field class="form-full-width">
-    <input
-      matInput
-      name="password"
-      [(ngModel)]="password"
-      placeholder="Senha"
-      [type]="hide ? 'password' : 'text'"
-    />
-    <mat-icon matSuffix (click)="hide = !hide">{{
-      hide ? "visibility" : "visibility_off"
-    }}</mat-icon>
-  </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <input
+            matInput
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Senha"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility" : "visibility_off"
+          }}</mat-icon>
+        </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="login()">Entrar</button>
-</form>
+        <button mat-raised-button color="primary" (click)="login()">
+          Entrar
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

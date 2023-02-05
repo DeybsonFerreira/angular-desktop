@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
 
 var angularMaterial = [
   MatSidenavModule,
@@ -33,6 +34,7 @@ var angularMaterial = [
   MatTableModule,
   MatTabsModule,
   MatMenuModule,
+  MatCardModule,
 ];
 
 @NgModule({
