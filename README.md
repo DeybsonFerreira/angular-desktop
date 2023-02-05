@@ -33,8 +33,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 3) exemplo de atualização do pacote: 
 ``` ng update @angular/material ```
 
-# pacotes
-npm install primeng --save
-npm install primeicons --save
-
+npm install --save @angular/material @angular/cdk @angular/animations
 

@@ -16,7 +16,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
 
 var angularMaterial = [
   MatSidenavModule,
@@ -26,6 +29,10 @@ var angularMaterial = [
   MatInputModule,
   MatButtonModule,
   MatIconModule,
+  MatDialogModule,
+  MatTableModule,
+  MatTabsModule,
+  MatMenuModule,
 ];
 
 @NgModule({
@@ -34,7 +41,6 @@ var angularMaterial = [
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    SideNavComponent,
   ],
   imports: [
     BrowserModule,
