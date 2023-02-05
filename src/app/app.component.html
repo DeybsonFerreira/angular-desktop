@@ -1,32 +1,22 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer mode="side" class="sidenav" fixedInViewport="true">
-    <mat-toolbar>Menu</mat-toolbar>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button type="button" mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    System
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
     <mat-nav-list>
       <a mat-list-item routerLink="/login">Login</a>
       <a mat-list-item routerLink="/profile">Profile</a>
       <a mat-list-item routerLink="/register">Register</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
 
-      <button mat-button [matMenuTriggerFor]="menu2">Deybson.Ferreira</button>
-      <mat-menu #menu2="matMenu">
-        <button mat-menu-item>Perfil</button>
-        <button mat-menu-item>Sair</button>
-      </mat-menu>
-    </mat-toolbar>
-    <ng-content> </ng-content>
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
