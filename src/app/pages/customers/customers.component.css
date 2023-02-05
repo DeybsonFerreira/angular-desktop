@@ -1,0 +1,12 @@
+.customers-sidenav {
+  width: 20%;
+}
+
+.customers-list {
+  width: 60%;
+  margin: 2em auto;
+}
+
+.text-center {
+  text-align: center;
+}

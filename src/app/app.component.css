@@ -6,9 +6,6 @@
   color: white;
 }
 
-.page-content {
-  height: 100vh;
-}
 .linkMenu:hover {
   background-color: #939dd8;
   cursor: pointer;

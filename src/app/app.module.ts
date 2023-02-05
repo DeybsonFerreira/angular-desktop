@@ -22,7 +22,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { ClientesComponent } from './pages/clientes/clientes.component';
+import { CustomersModule } from './pages/customers/customers.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
 
 var angularMaterial = [
   MatSidenavModule,
@@ -40,20 +42,24 @@ var angularMaterial = [
   MatExpansionModule,
 ];
 
+var pagesModules = [CustomersModule];
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ClientesComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     angularMaterial,
+    pagesModules,
   ],
   providers: [],
   bootstrap: [AppComponent],
