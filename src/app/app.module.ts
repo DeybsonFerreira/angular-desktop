@@ -21,6 +21,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ClientesComponent } from './pages/clientes/clientes.component';
 
 var angularMaterial = [
   MatSidenavModule,
@@ -35,6 +37,7 @@ var angularMaterial = [
   MatTabsModule,
   MatMenuModule,
   MatCardModule,
+  MatExpansionModule,
 ];
 
 @NgModule({
@@ -43,6 +46,7 @@ var angularMaterial = [
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    ClientesComponent,
   ],
   imports: [
     BrowserModule,

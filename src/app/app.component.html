@@ -1,22 +1,64 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="color-default">
   <mat-toolbar-row>
-    <button type="button" mat-icon-button (click)="sidenav.toggle()">
+    <button type="button" mat-icon-button (click)="drawer.toggle()">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
     System
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/login">Login</a>
-      <a mat-list-item routerLink="/profile">Profile</a>
-      <a mat-list-item routerLink="/register">Register</a>
-    </mat-nav-list>
-  </mat-sidenav>
+<mat-drawer-container class="page-container" [hasBackdrop]="true">
+  <mat-drawer #drawer mode="side" style="width: 200px">
+    <mat-list role="list">
+      <mat-list-item
+        (click)="drawer.toggle()"
+        class="linkMenu"
+        routerLink=""
+        role="listitem"
+      >
+        <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>
+        <Label>Home</Label>
+      </mat-list-item>
 
-  <mat-sidenav-content>
+      <mat-list-item
+        (click)="drawer.toggle()"
+        class="linkMenu"
+        routerLink="Profile"
+        role="listitem"
+      >
+        <mat-icon aria-hidden="false" aria-label="person icon">person</mat-icon>
+        <Label>Meus Dados</Label>
+      </mat-list-item>
+      <mat-list-item
+        (click)="drawer.toggle()"
+        class="linkMenu"
+        routerLink="Register"
+        role="listitem"
+      >
+        <mat-icon aria-hidden="false" aria-label="person icon">person</mat-icon>
+        <Label>Cadastro</Label>
+      </mat-list-item>
+      <mat-list-item
+        (click)="drawer.toggle()"
+        class="linkMenu"
+        routerLink="Register"
+        role="listitem"
+      >
+        <mat-icon aria-hidden="false" aria-label="chat icon">chat</mat-icon>
+        <Label>Contato</Label>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+  <mat-drawer-content class="page-content">
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span class="text-muted"
+      >Deybson Ferreira - Desenvolvedor de Sistemas - Senior</span
+    >
+  </div>
+</footer>
