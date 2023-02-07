@@ -6,19 +6,18 @@
   </mat-card-header>
   <mat-card-content>
     <mat-form-field class="form-full-width input-sm" appearance="fill">
-      <mat-label>Nome </mat-label>
-      <input matInput type="text" />
-      <!-- <input [(ngModel)]="customerSelected.name" matInput /> -->
+      <mat-label>Nome</mat-label>
+      <input [(ngModel)]="customer.name" matInput />
     </mat-form-field>
 
     <mat-form-field class="form-full-width input-sm" appearance="fill">
       <mat-label>Sobrenome</mat-label>
-      <input matInput />
+      <input [(ngModel)]="customer.lastname" matInput />
     </mat-form-field>
 
     <mat-form-field class="form-full-width input-sm" appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput />
+      <input [(ngModel)]="customer.email" matInput />
     </mat-form-field>
 
     <div class="button-row">

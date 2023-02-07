@@ -1,5 +1,4 @@
-<!-- <mat-toolbar class="color-default"> -->
-<mat-toolbar color="primary">
+<mat-toolbar class="color-defaultxxx" color="primary">
   <mat-toolbar-row>
     <button type="button" mat-icon-button (click)="drawer.toggle()">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
@@ -14,17 +13,17 @@
       <mat-list-item
         (click)="drawer.toggle()"
         class="linkMenu"
-        routerLink=""
+        routerLink="login"
         role="listitem"
       >
         <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>
-        <Label>Home</Label>
+        <Label>Login</Label>
       </mat-list-item>
 
       <mat-list-item
         (click)="drawer.toggle()"
         class="linkMenu"
-        routerLink="Profile"
+        routerLink="profile"
         role="listitem"
       >
         <mat-icon aria-hidden="false" aria-label="person icon">person</mat-icon>
@@ -33,11 +32,11 @@
       <mat-list-item
         (click)="drawer.toggle()"
         class="linkMenu"
-        routerLink="Register"
+        routerLink="customers"
         role="listitem"
       >
         <mat-icon aria-hidden="false" aria-label="person icon">person</mat-icon>
-        <Label>Cadastro</Label>
+        <Label>Clientes</Label>
       </mat-list-item>
       <mat-list-item
         (click)="drawer.toggle()"
@@ -56,10 +55,4 @@
   </mat-drawer-content>
 </mat-drawer-container>
 
-<footer class="footer ">
-  <div class="container">
-    <span class="text-muted"
-      >Deybson Ferreira - Desenvolvedor de Sistemas - Senior
-    </span>
-  </div>
-</footer>
+<app-footer></app-footer>

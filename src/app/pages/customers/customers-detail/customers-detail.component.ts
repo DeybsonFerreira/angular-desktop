@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/components/dialog/confirm-dialog/confirm-dialog.component';
-import { SharedObjectsService } from 'src/app/core/shared-objects.service';
+import { CustomersSharedService } from '../customersShared.service';
+import { CustomersSidenavService } from '../customersSidenav.service';
 import { Customer } from '../models/customer.model';
 
 @Component({
@@ -10,9 +11,17 @@ import { Customer } from '../models/customer.model';
   styleUrls: ['./customers-detail.component.css'],
 })
 export class CustomersDetailComponent {
-  public customerSelected!: Customer;
-  constructor(public dialog: MatDialog, private shared: SharedObjectsService) {
-    // this.customerSelected = this.shared.getObject();
+  customer: Customer = new Customer();
+  @Output() customerUpdateEvent = new EventEmitter<Customer>();
+
+  constructor(
+    public dialog: MatDialog,
+    private sidenavService: CustomersSidenavService,
+    public customersShared: CustomersSharedService
+  ) {
+    customersShared.customerSelected.subscribe((selected) => {
+      this.customer = { ...selected };
+    });
   }
 
   saveCustomer() {
@@ -21,12 +30,13 @@ export class CustomersDetailComponent {
 
   openDialog() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '250px',
+      width: '300px',
     });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        //confirm
+        this.customerUpdateEvent.emit(this.customer);
+        this.sidenavService.toggle();
       }
     });
   }

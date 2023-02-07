@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { DbJsonService } from 'src/app/core/dbJsonService.service';
-import { SharedObjectsService } from 'src/app/core/shared-objects.service';
 import { CustomersSidenavService } from 'src/app/pages/customers/customersSidenav.service';
 import { Customer } from '../models/customer.model';
+import { EventEmitter } from '@angular/core';
+import { CustomersSharedService } from '../customersShared.service';
 
 @Component({
   selector: 'app-customers-list',
@@ -12,13 +13,12 @@ import { Customer } from '../models/customer.model';
 export class CustomersListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'lastname', 'openDetail'];
   public dataSource: Customer[] = [];
-
-  customerSelected!: Customer;
+  @Input() costumerSelected: Customer = new Customer();
+  @Output() customerSelectedEvent = new EventEmitter<Customer>();
 
   constructor(
     public database: DbJsonService,
-    private sidenavService: CustomersSidenavService,
-    private shared: SharedObjectsService
+    private sidenavService: CustomersSidenavService
   ) {}
 
   ngOnInit() {
@@ -28,8 +28,18 @@ export class CustomersListComponent implements OnInit {
   }
 
   public selectCustomer(item: Customer) {
-    this.customerSelected = item;
-    this.shared.setObject(this.customerSelected);
+    this.customerSelectedEvent.emit(item);
+    this.costumerSelected = item;
+    console.log('selecionando', this.costumerSelected);
+  }
+
+  public updateCustomers(customer: Customer) {
+    this.dataSource.forEach((item) => {
+      let find = item.id == customer.id;
+      if (find) {
+        item = customer;
+      }
+    });
   }
 
   public toggleSidenav() {

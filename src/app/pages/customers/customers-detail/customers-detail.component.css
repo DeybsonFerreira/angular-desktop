@@ -8,3 +8,7 @@
   background-color: #88c425;
   color: white;
 }
+
+mat-form-field {
+  margin-bottom: -1em;
+}

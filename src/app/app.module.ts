@@ -25,6 +25,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CustomersModule } from './pages/customers/customers.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 var angularMaterial = [
   MatSidenavModule,
@@ -51,6 +52,7 @@ var pagesModules = [CustomersModule];
     RegisterComponent,
     ProfileComponent,
     ConfirmDialogComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
