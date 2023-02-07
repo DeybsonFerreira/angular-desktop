@@ -1,13 +1,7 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  Input,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { CustomersSharedService } from './customersShared.service';
+import { StatusOperation } from 'src/app/core/models/statusOperation';
+import { CustomersListComponent } from './customers-list/customers-list.component';
 import { CustomersSidenavService } from './customersSidenav.service';
 import { Customer } from './models/customer.model';
 
@@ -18,23 +12,30 @@ import { Customer } from './models/customer.model';
 })
 export class CustomersComponent implements AfterViewInit {
   @ViewChild('sidenav') sidenav!: MatSidenav;
-  @Input() costumerSelectedFromList: Customer = new Customer();
+  @ViewChild(CustomersListComponent) childCustomerList!: CustomersListComponent;
 
-  constructor(
-    private sidenavService: CustomersSidenavService,
-    public customersShared: CustomersSharedService
-  ) {}
+  costumerSelectedFromList!: Customer;
+  customerOperation!: StatusOperation;
+
+  constructor(private sidenavService: CustomersSidenavService) {}
 
   ngAfterViewInit() {
     this.sidenavService.setSidenav(this.sidenav);
   }
 
-  changeCustomer(selectEvent: Customer) {
-    this.costumerSelectedFromList = selectEvent;
+  updateCustomerSelected(updatedEvent: Customer) {
+    if (this.customerOperation == StatusOperation.Update) {
+      this.costumerSelectedFromList = updatedEvent;
+      this.childCustomerList.updateCustomers(this.costumerSelectedFromList);
+    } else if (this.customerOperation == StatusOperation.Create) {
+      this.childCustomerList.AddCustomers(updatedEvent);
+    }
   }
 
-  setSelectedCustomer(selectEvent: Customer) {
-    this.costumerSelectedFromList = selectEvent;
-    this.customersShared.Select(selectEvent);
+  getSelectedCustomer(selectEvent: Customer) {
+    this.costumerSelectedFromList = { ...selectEvent };
+  }
+  getCustomerOperation(selectEvent: StatusOperation) {
+    this.customerOperation = selectEvent;
   }
 }

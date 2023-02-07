@@ -1,13 +1,18 @@
 <mat-sidenav-container class="page-content">
   <mat-sidenav class="customers-sidenav" #sidenav mode="over" position="end">
-    <app-customers-detail (customerUpdateEvent)="changeCustomer($event)">
+    <app-customers-detail
+      (customerConfirmedEvent)="updateCustomerSelected($event)"
+      [customer]="costumerSelectedFromList"
+      [customerOperation]="customerOperation"
+    >
     </app-customers-detail>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="customers-list">
       <app-customers-list
-        [costumerSelected]="costumerSelectedFromList"
-        (customerSelectedEvent)="setSelectedCustomer($event)"
+        #CustomersListComponent
+        (customerOperationEvent)="getCustomerOperation($event)"
+        (customerSelectedEvent)="getSelectedCustomer($event)"
       >
       </app-customers-list>
     </div>

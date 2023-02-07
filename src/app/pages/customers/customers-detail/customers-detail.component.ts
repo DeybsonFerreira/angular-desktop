@@ -1,7 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/components/dialog/confirm-dialog/confirm-dialog.component';
-import { CustomersSharedService } from '../customersShared.service';
+import { StatusOperation } from 'src/app/core/models/statusOperation';
 import { CustomersSidenavService } from '../customersSidenav.service';
 import { Customer } from '../models/customer.model';
 
@@ -11,23 +18,27 @@ import { Customer } from '../models/customer.model';
   styleUrls: ['./customers-detail.component.css'],
 })
 export class CustomersDetailComponent {
-  customer: Customer = new Customer();
-  @Output() customerUpdateEvent = new EventEmitter<Customer>();
+  @Input() customer: Customer = new Customer();
+  @Input() customerOperation!: StatusOperation;
+  @Output() customerConfirmedEvent = new EventEmitter<Customer>();
+
+  public operation = {
+    Create: StatusOperation.Create,
+    Update: StatusOperation.Update,
+  };
 
   constructor(
     public dialog: MatDialog,
-    private sidenavService: CustomersSidenavService,
-    public customersShared: CustomersSharedService
-  ) {
-    customersShared.customerSelected.subscribe((selected) => {
-      this.customer = { ...selected };
-    });
-  }
+    private sidenavService: CustomersSidenavService
+  ) {}
 
   saveCustomer() {
     this.openDialog();
   }
 
+  toggleSidenav() {
+    this.sidenavService.toggle();
+  }
   openDialog() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '300px',
@@ -35,8 +46,8 @@ export class CustomersDetailComponent {
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.customerUpdateEvent.emit(this.customer);
-        this.sidenavService.toggle();
+        this.customerConfirmedEvent.emit(this.customer);
+        this.toggleSidenav();
       }
     });
   }
