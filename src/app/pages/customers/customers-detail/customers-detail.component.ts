@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/components/dialog/confirm-dialog/confirm-dialog.component';
 import { StatusOperation } from 'src/app/core/models/statusOperation';
@@ -42,6 +35,10 @@ export class CustomersDetailComponent {
   openDialog() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '300px',
+      data: {
+        title: 'Confirmação',
+        text: 'Você tem certeza que deseja salvar as informações',
+      },
     });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {

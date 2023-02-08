@@ -4,6 +4,8 @@ import { Customer } from '../models/customer.model';
 import { EventEmitter } from '@angular/core';
 import { CustomerServiceService } from '../services/customerService.service';
 import { StatusOperation } from 'src/app/core/models/statusOperation';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/components/dialog/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-customers-list',
@@ -20,7 +22,8 @@ export class CustomersListComponent implements OnInit {
   constructor(
     private sidenavService: CustomersSidenavService,
     private customerServiceService: CustomerServiceService,
-    public changesRef: ChangeDetectorRef
+    public changesRef: ChangeDetectorRef,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -40,6 +43,35 @@ export class CustomersListComponent implements OnInit {
     this.customerSelectedEvent.emit(newItem);
   }
 
+  public deleteCustomer(customerDelete: Customer) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '300px',
+      data: {
+        title: 'DELETAR',
+        text: `Deseja Excluir o cliente ?`,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.customerServiceService
+          .Delete(customerDelete.id)
+          .subscribe((_response: Customer) => {
+            this.removeDatasource(customerDelete.id);
+            this.refreshDatasource();
+          });
+      }
+    });
+  }
+
+  public removeDatasource(id: number) {
+    for (var i = 0; i < this.dataSource.length; i++) {
+      if (this.dataSource[i].id === id) {
+        this.dataSource.splice(i, 1);
+      }
+    }
+  }
+
   public selectCustomer(item: Customer) {
     this.sendOperation(StatusOperation.Update);
     this.customerSelectedEvent.emit(item);
@@ -57,8 +89,13 @@ export class CustomersListComponent implements OnInit {
       .Post(customer)
       .subscribe((response: Customer) => {
         this.dataSource.push(response);
-        this.changesRef.detectChanges();
+        this.refreshDatasource();
       });
+  }
+
+  private refreshDatasource() {
+    this.dataSource = [...this.dataSource];
+    this.changesRef.detectChanges();
   }
 
   public updateCustomers(customer: Customer) {

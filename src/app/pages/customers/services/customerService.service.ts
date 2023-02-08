@@ -26,4 +26,8 @@ export class CustomerServiceService {
   Post(data: Customer): Observable<Customer> {
     return this.http.post<Customer>(`${this.baseURL}/customers/`, data);
   }
+
+  Delete(id: number): Observable<Customer> {
+    return this.http.delete<Customer>(`${this.baseURL}/customers/${id}`);
+  }
 }
