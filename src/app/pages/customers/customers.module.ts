@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CustomersDetailComponent } from './customers-detail/customers-detail.component';
 import { FormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 var angularMaterial = [
   MatSidenavModule,
@@ -34,6 +35,7 @@ var angularMaterial = [
   MatMenuModule,
   MatCardModule,
   MatExpansionModule,
+  MatPaginatorModule,
 ];
 
 @NgModule({

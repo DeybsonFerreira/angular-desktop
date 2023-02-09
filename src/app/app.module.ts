@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,9 +23,19 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CustomersModule } from './pages/customers/customers.module';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSortModule } from '@angular/material/sort';
+import { ProductsComponent } from './pages/products/products.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { DragComponent } from './pages/drag/drag.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 var angularMaterial = [
   MatSidenavModule,
@@ -41,6 +51,7 @@ var angularMaterial = [
   MatMenuModule,
   MatCardModule,
   MatExpansionModule,
+  MatPaginatorModule,
 ];
 
 var pagesModules = [CustomersModule];
@@ -53,6 +64,9 @@ var pagesModules = [CustomersModule];
     ProfileComponent,
     ConfirmDialogComponent,
     FooterComponent,
+    ProductsComponent,
+    DashboardComponent,
+    DragComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +76,23 @@ var pagesModules = [CustomersModule];
     HttpClientModule,
     angularMaterial,
     pagesModules,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatGridListModule,
+    MatMenuModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

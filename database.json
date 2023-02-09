@@ -2,53 +2,8 @@
   "customers": [
     {
       "id": 1,
-      "name": "deybson",
+      "name": "DEYBSON",
       "lastname": "ferreira"
-    },
-    {
-      "id": 2,
-      "name": "Deybson",
-      "lastname": "Ferreira"
-    },
-    {
-      "id": 3,
-      "name": "Deybson",
-      "lastname": "Ferreira"
-    },
-    {
-      "id": 4,
-      "name": "Deybson",
-      "lastname": "Ferreira"
-    },
-    {
-      "id": 5,
-      "name": "Deybson",
-      "lastname": "Ferreira"
-    },
-    {
-      "id": 6,
-      "name": "Deybson",
-      "lastname": "Ferreira"
-    },
-    {
-      "id": 7,
-      "name": "Deybson",
-      "lastname": "Ferreira"
-    },
-    {
-      "id": 8,
-      "name": "anelize",
-      "lastname": "rocha"
-    },
-    {
-      "id": 9,
-      "name": "anelize2",
-      "lastname": "rocha2"
-    },
-    {
-      "id": 10,
-      "name": "teste",
-      "lastname": "teste"
     }
   ]
 }

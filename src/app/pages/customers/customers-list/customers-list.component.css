@@ -1,3 +1,10 @@
 .button-add-customer {
   float: right;
 }
+
+.customer-page {
+  padding: 10px;
+}
+tr.mat-mdc-footer-row td {
+  font-weight: bold;
+}

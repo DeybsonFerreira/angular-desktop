@@ -9,22 +9,34 @@ body {
 .input-sm {
   height: 100%;
 }
-.my-background {
-  background: #0f2027; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #2c5364,
-    #203a43,
-    #0f2027
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #2c5364,
-    #203a43,
-    #0f2027
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
 
 .text-white {
   color: white;
+}
+
+.text-primary {
+  color: #673ab7;
+}
+
+.text-center {
+  text-align: center;
+}
+.form-full-width {
+  width: 100%;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: red;
+}
+.w-100 {
+  width: 100%;
+}
+.w-50 {
+  width: 50%;
+}
+.item-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
