@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/components/dialog/confirm-dialog/confirm-dialog.component';
 import { StatusOperation } from 'src/app/core/models/statusOperation';
 import { CustomersSidenavService } from '../customersSidenav.service';
-import { Customer } from '../models/customer.model';
+import { address, Customer } from '../models/customer.model';
 
 @Component({
   selector: 'app-customers-detail',
@@ -14,6 +14,7 @@ export class CustomersDetailComponent {
   @Input() customer: Customer = new Customer();
   @Input() customerOperation!: StatusOperation;
   @Output() customerConfirmedEvent = new EventEmitter<Customer>();
+  panelOpenState = true;
 
   public operation = {
     Create: StatusOperation.Create,
@@ -31,6 +32,14 @@ export class CustomersDetailComponent {
 
   toggleSidenav() {
     this.sidenavService.toggle();
+  }
+
+  addAddress(customer: Customer) {
+    if (customer.address == null) customer.address = [];
+
+    let newAddress = new address();
+    newAddress.id = 0;
+    customer.address.push(newAddress);
   }
   openDialog() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {

@@ -17,6 +17,9 @@ body {
 .text-primary {
   color: #673ab7;
 }
+.bg-primary {
+  background-color: #673ab7;
+}
 
 .text-center {
   text-align: center;

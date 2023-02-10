@@ -1,31 +1,76 @@
-<mat-card *ngIf="customer">
-  <mat-card-header>
-    <mat-card-title-group>
-      <mat-card-title>
-        <span *ngIf="customerOperation == operation.Update"
-          >Atualizar Dados do cliente
-        </span>
-        <span *ngIf="customerOperation == operation.Create"
-          >Adicionar Dados do cliente
-        </span>
-      </mat-card-title>
-    </mat-card-title-group>
-  </mat-card-header>
+<div *ngIf="customer">
   <mat-card-content>
-    <mat-form-field class="form-full-width input-sm" appearance="fill">
-      <mat-label>Nome</mat-label>
-      <input [(ngModel)]="customer.name" matInput />
-    </mat-form-field>
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="panelOpenState">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="text-white">
+            Informações Pessoais
+          </mat-panel-title>
+        </mat-expansion-panel-header>
 
-    <mat-form-field class="form-full-width input-sm" appearance="fill">
-      <mat-label>Sobrenome</mat-label>
-      <input [(ngModel)]="customer.lastname" matInput />
-    </mat-form-field>
+        <mat-form-field class="form-full-width input-sm" appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input [(ngModel)]="customer.name" matInput />
+        </mat-form-field>
 
-    <mat-form-field class="form-full-width input-sm" appearance="fill">
-      <mat-label>Email</mat-label>
-      <input [(ngModel)]="customer.email" matInput />
-    </mat-form-field>
+        <mat-form-field class="form-full-width input-sm" appearance="fill">
+          <mat-label>Sobrenome</mat-label>
+          <input [(ngModel)]="customer.lastname" matInput />
+        </mat-form-field>
+
+        <mat-form-field class="form-full-width input-sm" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input [(ngModel)]="customer.email" matInput />
+        </mat-form-field>
+      </mat-expansion-panel>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title class="text-white"> Endereços </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div id="enderecoPanel">
+          <button mat-icon-button (click)="addAddress(customer)">
+            <mat-icon color="primary">add</mat-icon>
+          </button>
+          <div
+            class="enderecoContent"
+            *ngFor="let address of customer.address; let indexOfelement = index"
+          >
+            <mat-list-item>Endereço {{ indexOfelement + 1 }}</mat-list-item>
+            <div class="form-full-width">
+              <mat-form-field class="w-50" appearance="fill">
+                <mat-label>CEP</mat-label>
+                <input [(ngModel)]="address.cep" matInput />
+              </mat-form-field>
+
+              <mat-form-field class="w-50" appearance="fill">
+                <mat-label>Rua</mat-label>
+                <input [(ngModel)]="address.street" matInput />
+              </mat-form-field>
+            </div>
+            <mat-form-field appearance="fill">
+              <mat-label>Cidade</mat-label>
+              <input [(ngModel)]="address.city" matInput />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>UF</mat-label>
+              <input [(ngModel)]="address.uf" matInput />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Bairro</mat-label>
+              <input [(ngModel)]="address.district" matInput />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Complemento</mat-label>
+              <input [(ngModel)]="address.info" matInput />
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
 
     <div class="button-row">
       <a (click)="toggleSidenav()" mat-mini-fab extended color="warn">
@@ -36,4 +81,4 @@
       </a>
     </div>
   </mat-card-content>
-</mat-card>
+</div>
